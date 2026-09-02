@@ -4,6 +4,19 @@
 <head>
     <meta charset="UTF-8">
 
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem('lockbytes-theme');
+                var preferredTheme = savedTheme === 'dark' || savedTheme === 'light'
+                    ? savedTheme
+                    : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', preferredTheme);
+            } catch (error) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 
 <meta
     name="viewport"
@@ -73,11 +86,20 @@
             <a href="terms-of-use.html">Terms</a>
         </nav>
 
+        <button
+            class="theme-toggle"
+            type="button"
+            data-theme-toggle
+            aria-label="Switch to light mode"
+            aria-pressed="false"
+        >
+            <span class="theme-icon" aria-hidden="true">☀️</span>
+            <span class="theme-label">Light mode</span>
+        </button>
+
         <a
-            href="https://github.com/codagewithrahul/LockBytes/releases"
+            href="download.html"
             class="nav-button"
-            target="_blank"
-            rel="noopener noreferrer"
         >
             Download
         </a>
@@ -126,10 +148,8 @@
                 <div class="hero-actions">
 
                     <a
-                        href="https://github.com/codagewithrahul/LockBytes/releases"
+                        href="download.html"
                         class="button button-primary"
-                        target="_blank"
-                        rel="noopener noreferrer"
                     >
                         Download LockBytes
                         <span>→</span>
@@ -865,12 +885,10 @@
             </div>
 
             <a
-                href="https://github.com/codagewithrahul/LockBytes/releases"
+                href="download.html"
                 class="button button-primary large-button"
-                target="_blank"
-                rel="noopener noreferrer"
             >
-                Download from GitHub
+                Download LockBytes
                 <span>→</span>
             </a>
 
@@ -954,12 +972,8 @@
                 GitHub
             </a>
 
-            <a
-                href="https://github.com/codagewithrahul/LockBytes/releases"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Releases
+            <a href="download.html">
+                Download Page
             </a>
 
         </div>
@@ -981,6 +995,7 @@
 
 </footer>
 
+<script src="theme.js"></script>
 
 </body>
 </html>

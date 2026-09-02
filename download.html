@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem('lockbytes-theme');
+                var preferredTheme = savedTheme === 'dark' || savedTheme === 'light'
+                    ? savedTheme
+                    : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', preferredTheme);
+            } catch (error) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download LockBytes for Windows and protect your files with secure local-first encryption.">
+    <meta name="keywords" content="LockBytes download, Windows download, encryption software, secure file protection">
+    <title>Download LockBytes | LockBytes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container nav-container">
+
+        <a href="index.html" class="brand" aria-label="LockBytes home page">
+            <img src="img/lockbytes_logo_transparent_kb.png" alt="LockBytes logo" class="brand-logo">
+            <span>LockBytes</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html#features">Features</a>
+            <a href="index.html#how-it-works">How It Works</a>
+            <a href="index.html#recovery">Recovery</a>
+            <a href="index.html#security">Security</a>
+            <a href="privacy-policy.html">Privacy</a>
+            <a href="terms-of-use.html">Terms</a>
+        </nav>
+
+        <button
+            class="theme-toggle"
+            type="button"
+            data-theme-toggle
+            aria-label="Switch to light mode"
+            aria-pressed="false"
+        >
+            <span class="theme-icon" aria-hidden="true">☀️</span>
+            <span class="theme-label">Light mode</span>
+        </button>
+
+        <a href="download.html" class="nav-button" aria-label="Open LockBytes download page">
+            Download
+        </a>
+
+    </div>
+</header>
+
+<main>
+    <section class="download-page-hero section">
+        <div class="container narrow download-page-shell">
+            <div class="download-page-intro">
+                <div class="section-label">DOWNLOAD</div>
+                <h1>Download LockBytes</h1>
+                <p>Secure your files with powerful, local-first encryption.</p>
+            </div>
+
+            <div class="download-page-card" aria-label="LockBytes download card">
+                <div class="download-branding">
+                    <div class="download-logo-wrap">
+                        <img src="img/lockbytes_logo_transparent_kb.png" alt="LockBytes logo" class="download-logo">
+                    </div>
+                    <div>
+                        <p class="download-product-label">LockBytes for Windows</p>
+                    </div>
+                </div>
+
+                <div class="download-meta-grid" data-release-info>
+                    <div class="release-stat">
+                        <span>Latest Version</span>
+                        <strong data-version>Loading...</strong>
+                    </div>
+                    <div class="release-stat">
+                        <span>Release Date</span>
+                        <strong data-release-date>Loading...</strong>
+                    </div>
+                    <div class="release-stat">
+                        <span>Installer</span>
+                        <strong data-installer>Loading...</strong>
+                    </div>
+                    <div class="release-stat">
+                        <span>Architecture</span>
+                        <strong data-architecture>Loading...</strong>
+                    </div>
+                    <div class="release-stat">
+                        <span>Compatibility</span>
+                        <strong data-compatibility>Windows 10 / 11</strong>
+                    </div>
+                    <div class="release-stat">
+                        <span>Size</span>
+                        <strong data-size>Loading...</strong>
+                    </div>
+                </div>
+
+                <a
+                    class="button button-primary button-download"
+                    href="#"
+                    aria-label="Loading latest LockBytes release"
+                    download
+                    data-download-button
+                    aria-disabled="true"
+                >
+                    Loading latest release...
+                    <span aria-hidden="true">→</span>
+                </a>
+
+                <p class="download-note" data-download-note>Preparing the latest Windows installer...</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container narrow">
+            <div class="section-heading centered">
+                <div class="section-label">WHAT'S NEW</div>
+                <h2 data-release-heading>Loading release notes...</h2>
+            </div>
+
+            <div class="info-panel">
+                <div class="release-notes" data-release-notes>
+                    <p>Loading latest LockBytes release...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container narrow">
+            <div class="section-heading centered">
+                <div class="section-label">RELEASE INFORMATION</div>
+                <h2>Release details</h2>
+            </div>
+
+            <div class="info-panel release-info-panel">
+                <div class="detail-row"><span>Version</span><strong data-version-detail>Loading...</strong></div>
+                <div class="detail-row"><span>Release date</span><strong data-release-date>Loading...</strong></div>
+                <div class="detail-row"><span>Installer</span><strong data-installer-name>Loading...</strong></div>
+                <div class="detail-row"><span>Platform</span><strong>Windows</strong></div>
+                <div class="detail-row"><span>Architecture</span><strong data-architecture>Loading...</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container narrow">
+            <div class="section-heading centered">
+                <div class="section-label">SYSTEM REQUIREMENTS</div>
+                <h2>System Requirements</h2>
+            </div>
+
+            <div class="info-panel requirements-panel">
+                <div class="detail-row"><span>Operating System</span><strong>Windows 10 or Windows 11</strong></div>
+                <div class="detail-row"><span>Architecture</span><strong>64-bit</strong></div>
+                <div class="detail-row"><span>Storage</span><strong>Sufficient space for the application and encrypted files</strong></div>
+                <div class="detail-row"><span>Internet</span><strong>Required only for online services such as recovery or updates</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container narrow">
+            <div class="section-heading centered">
+                <div class="section-label">DOWNLOAD TRUST</div>
+                <h2>Official LockBytes download</h2>
+            </div>
+
+            <div class="info-panel trust-panel">
+                <p>Download from the official LockBytes website.</p>
+                <p>The installer is distributed through the official LockBytes GitHub release.</p>
+                <div class="checksum-box" data-checksum-box hidden>
+                    <span>SHA-256</span>
+                    <strong data-checksum>Not available</strong>
+                </div>
+                <p class="trust-note" data-checksum-message>Checking for checksum information...</p>
+                <div class="release-error-message" data-error-state hidden></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container narrow">
+            <div class="section-heading centered">
+                <div class="section-label">INSTALL</div>
+                <h2>How to Install LockBytes</h2>
+            </div>
+
+            <ol class="steps-list">
+                <li>Download the installer.</li>
+                <li>Open the downloaded installer.</li>
+                <li>Follow the installation instructions.</li>
+                <li>Launch LockBytes.</li>
+                <li>Complete the initial setup.</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container narrow">
+            <div class="section-heading centered">
+                <div class="section-label">PREVIOUS RELEASES</div>
+                <h2>Previous Versions</h2>
+            </div>
+
+            <div class="info-panel version-list">
+                <div class="version-item">
+                    <div>
+                        <strong>v1.5.0</strong>
+                        <span>Previous stable release</span>
+                    </div>
+                    <a href="#" class="text-link">View Release Notes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <a href="index.html" class="brand">
+                <img src="img/lockbytes_logo_transparent_kb.png" alt="LockBytes logo" class="brand-logo">
+                <span>LockBytes</span>
+            </a>
+            <p>Secure USB-based file encryption for Windows. Local-first and privacy-focused.</p>
+            <p class="developer">Developed by Rahul Gupta.</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Product</h4>
+            <a href="index.html#features">Features</a>
+            <a href="index.html#how-it-works">How It Works</a>
+            <a href="index.html#recovery">Recovery</a>
+            <a href="index.html#security">Security</a>
+        </div>
+
+        <div class="footer-column">
+            <h4>Legal</h4>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-use.html">Terms of Use</a>
+        </div>
+
+        <div class="footer-column">
+            <h4>Resources</h4>
+            <a href="https://github.com/CodageWithRahul/LockBytes" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="download.html">Download Page</a>
+        </div>
+    </div>
+
+    <div class="container footer-bottom">
+        <span>© 2026 LockBytes. All rights reserved.</span>
+        <span>LockBytes is an independent software project.</span>
+    </div>
+</footer>
+
+<script src="theme.js"></script>
+<script src="download.js"></script>
+</body>
+</html>
