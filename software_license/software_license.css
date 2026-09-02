@@ -1,0 +1,323 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #f6f7f9;
+    color: #24272c;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+    width: min(920px, calc(100% - 32px));
+    margin: 40px auto;
+    background: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 10px;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.policy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+
+    padding: 30px 42px;
+
+    border-bottom: 1px solid #e5e7eb;
+    background: #ffffff;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #162b4a;
+    color: #ffffff;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.brand h1 {
+    margin: 0;
+
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.brand p {
+    margin: 3px 0 0;
+
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.policy-meta {
+    text-align: right;
+}
+
+.policy-meta span {
+    display: block;
+
+    color: #737983;
+    font-size: 12px;
+}
+
+.policy-meta strong {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #33373d;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.policy-content {
+    padding: 40px 42px;
+}
+
+.policy-content section {
+    margin-bottom: 38px;
+}
+
+.policy-content section:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+    padding-bottom: 12px;
+}
+
+.notice {
+    margin-bottom: 22px;
+
+    padding: 18px 20px;
+
+    background: #f7f9fc;
+    border: 1px solid #dfe5ec;
+    border-left: 4px solid #365f91;
+    border-radius: 6px;
+}
+
+.notice strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #26384f;
+    font-size: 15px;
+}
+
+.notice p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+h2 {
+    margin: 0 0 14px;
+
+    color: #1f2933;
+
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+h2::after {
+    content: "";
+
+    display: block;
+
+    width: 34px;
+    height: 2px;
+
+    margin-top: 8px;
+
+    background: #365f91;
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+p {
+    margin: 0 0 13px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+strong {
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   LISTS
+========================================================= */
+
+ul {
+    margin: 10px 0 16px;
+    padding-left: 24px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   WARNING
+========================================================= */
+
+.warning {
+    margin-top: 18px;
+
+    padding: 17px 19px;
+
+    background: #fffaf0;
+    border: 1px solid #ead9ad;
+    border-radius: 6px;
+}
+
+.warning strong {
+    color: #735d22;
+}
+
+.warning p {
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   FINAL NOTICE
+========================================================= */
+
+.final-notice {
+    padding: 22px;
+
+    background: #f7f9fc;
+    border: 1px solid #dce2e9;
+    border-radius: 7px;
+}
+
+.final-notice h2 {
+    margin-bottom: 13px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.policy-footer {
+    padding: 22px 42px;
+
+    border-top: 1px solid #e5e7eb;
+
+    background: #fafafa;
+
+    color: #777d86;
+
+    text-align: center;
+    font-size: 12px;
+}
+
+.policy-footer p {
+    margin: 3px 0;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    .page {
+        width: calc(100% - 20px);
+        margin: 10px auto;
+        border-radius: 7px;
+    }
+
+    .policy-header {
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 24px;
+    }
+
+    .policy-meta {
+        text-align: left;
+    }
+
+    .policy-content {
+        padding: 28px 24px;
+    }
+
+    .policy-footer {
+        padding: 20px 24px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+}
