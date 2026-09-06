@@ -27,17 +27,15 @@
     <div class="container nav-container">
 
         <a href="index.html" class="brand" aria-label="LockBytes home page">
-            <img src="img/lockbytes_logo_transparent_kb.png" alt="LockBytes logo" class="brand-logo">
+            <img src="img/lockbytes_logo_transparent_kb.png" alt="LockBytes logo" width="32" height="32" class="brand-logo">
             <span>LockBytes</span>
         </a>
 
         <nav class="nav-links" aria-label="Main navigation">
-            <a href="index.html#features">Features</a>
-            <a href="index.html#how-it-works">How It Works</a>
+            <a href="index.html#architecture">Architecture</a>
+            <a href="index.html#usb-layer">USB layer</a>
             <a href="index.html#recovery">Recovery</a>
-            <a href="index.html#security">Security</a>
-            <a href="privacy-policy.html">Privacy</a>
-            <a href="terms-of-use.html">Terms</a>
+            <a href="index.html#features">Features</a>
         </nav>
 
         <button
@@ -64,13 +62,13 @@
             <div class="download-page-intro">
                 <div class="section-label">DOWNLOAD</div>
                 <h1>Download LockBytes</h1>
-                <p>Secure your files with powerful, local-first encryption.</p>
+                <p>Download the official LockBytes Windows installer from the latest LockBytes GitHub Release.</p>
             </div>
 
             <div class="download-page-card" aria-label="LockBytes download card">
                 <div class="download-branding">
                     <div class="download-logo-wrap">
-                        <img src="img/lockbytes_logo_transparent_kb.png" alt="LockBytes logo" class="download-logo">
+                        <img src="img/lockbytes_logo_transparent_kb.png" alt="LockBytes logo" width="40" height="40" class="download-logo">
                     </div>
                     <div>
                         <p class="download-product-label">LockBytes for Windows</p>
@@ -95,8 +93,8 @@
                         <strong data-architecture>Loading...</strong>
                     </div>
                     <div class="release-stat">
-                        <span>Compatibility</span>
-                        <strong data-compatibility>Windows 10 / 11</strong>
+                        <span>Platform</span>
+                        <strong data-compatibility>Windows</strong>
                     </div>
                     <div class="release-stat">
                         <span>Size</span>
@@ -172,20 +170,48 @@
     <section class="section section-dark">
         <div class="container narrow">
             <div class="section-heading centered">
-                <div class="section-label">DOWNLOAD TRUST</div>
-                <h2>Official LockBytes download</h2>
+                <div class="section-label">OFFICIAL LOCKBYTES RELEASE</div>
+                <h2>Verify the installer you download.</h2>
             </div>
 
             <div class="info-panel trust-panel">
-                <p>Download from the official LockBytes website.</p>
-                <p>The installer is distributed through the official LockBytes GitHub release.</p>
-                <div class="checksum-box" data-checksum-box hidden>
-                    <span>SHA-256</span>
-                    <strong data-checksum>Not available</strong>
+                <p>Download the official LockBytes Windows installer from the latest LockBytes GitHub Release.</p>
+                <div class="release-verification-grid">
+                    <div class="checksum-box" data-checksum-box>
+                        <div>
+                            <span>SHA-256 Checksum</span>
+                            <strong data-checksum>Checking the published release...</strong>
+                        </div>
+                        <button type="button" class="copy-button" data-copy-checksum disabled aria-disabled="true">Copy</button>
+                    </div>
+                    <a href="https://github.com/CodageWithRahul/LockBytes/releases/latest" class="button button-secondary release-link" data-release-link target="_blank" rel="noopener noreferrer">View GitHub Release <span aria-hidden="true">↗</span></a>
                 </div>
-                <p class="trust-note" data-checksum-message>Checking for checksum information...</p>
+                <p class="trust-note" data-checksum-message>Checking the checksum published for the exact installer above...</p>
+                <p class="verification-note">Verify the SHA-256 checksum after downloading to confirm that your installer matches the officially published LockBytes release.</p>
                 <div class="release-error-message" data-error-state hidden></div>
             </div>
+        </div>
+    </section>
+
+    <section class="section checksum-help-section">
+        <div class="container narrow">
+            <div class="section-heading centered">
+                <div class="section-label">CHECKSUM VERIFICATION</div>
+                <h2>How to verify the SHA-256 checksum</h2>
+                <p>Compare the hash from your downloaded installer with the complete value published above.</p>
+            </div>
+            <ol class="verification-steps">
+                <li>Download the LockBytes installer.</li>
+                <li>Open PowerShell or Command Prompt.</li>
+                <li>Calculate the SHA-256 hash of the downloaded <code>.exe</code>.</li>
+                <li>Compare the result with the SHA-256 checksum published on this website.</li>
+                <li>If both values match exactly, the downloaded file matches the published release.</li>
+            </ol>
+            <div class="command-panel">
+                <span>Windows PowerShell</span>
+                <code>Get-FileHash "path-to-LockBytes-installer.exe" -Algorithm SHA256</code>
+            </div>
+            <p class="verification-disclaimer">The entire hash must match exactly. Checksum verification confirms that the file contents match the published release value; it does not prove that the installer is digitally signed or establish who created it.</p>
         </div>
     </section>
 
@@ -219,7 +245,7 @@
                         <strong>v1.5.0</strong>
                         <span>Previous stable release</span>
                     </div>
-                    <a href="#" class="text-link">View Release Notes</a>
+                    <a href="https://github.com/CodageWithRahul/LockBytes/releases" class="text-link" target="_blank" rel="noopener noreferrer">View Release Notes</a>
                 </div>
             </div>
         </div>
@@ -230,7 +256,7 @@
     <div class="container footer-grid">
         <div class="footer-brand">
             <a href="index.html" class="brand">
-                <img src="img/lockbytes_logo_transparent_kb.png" alt="LockBytes logo" class="brand-logo">
+                <img src="img/lockbytes_logo_transparent_kb.png" alt="LockBytes logo" width="32" height="32" class="brand-logo">
                 <span>LockBytes</span>
             </a>
             <p>Secure USB-based file encryption for Windows. Local-first and privacy-focused.</p>
@@ -240,15 +266,15 @@
         <div class="footer-column">
             <h4>Product</h4>
             <a href="index.html#features">Features</a>
-            <a href="index.html#how-it-works">How It Works</a>
+            <a href="index.html#architecture">Architecture</a>
             <a href="index.html#recovery">Recovery</a>
-            <a href="index.html#security">Security</a>
+            <a href="index.html#usb-layer">USB layer</a>
         </div>
 
         <div class="footer-column">
             <h4>Legal</h4>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms-of-use.html">Terms of Use</a>
+            <a href="privacy_policy/index.html">Privacy Policy</a>
+            <a href="terms_of_use/index.html">Terms of Use</a>
         </div>
 
         <div class="footer-column">

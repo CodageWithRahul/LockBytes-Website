@@ -14,6 +14,8 @@ const elements = {
   checksumBox: document.querySelector('[data-checksum-box]'),
   checksum: document.querySelector('[data-checksum]'),
   checksumMessage: document.querySelector('[data-checksum-message]'),
+  copyChecksumButton: document.querySelector('[data-copy-checksum]'),
+  releaseLink: document.querySelector('[data-release-link]'),
   releaseNotes: document.querySelector('[data-release-notes]'),
   releaseHeading: document.querySelector('[data-release-heading]'),
   errorState: document.querySelector('[data-error-state]'),
@@ -109,11 +111,49 @@ function getAssetPriority(name) {
   return score;
 }
 
-function detectChecksumAsset(assets = []) {
+function detectChecksumAsset(assets = [], installer) {
   return (assets || []).find((asset) => {
     const name = (asset.name || '').toLowerCase();
-    return /sha(256)?|checksum/.test(name) || /\.sha256$/i.test(name) || /sha256sums?\.txt$/i.test(name);
+    if (!/sha(256)?|checksum/.test(name) && !/\.sha256$/i.test(name) && !/sha256sums?\.txt$/i.test(name)) {
+      return false;
+    }
+
+    return !installer || name !== (installer.name || '').toLowerCase();
   }) || null;
+}
+
+function normalizeChecksum(value) {
+  const match = String(value || '').trim().match(/^(?:sha256:)??([a-f0-9]{64})$/i);
+  return match ? match[1].toLowerCase() : null;
+}
+
+function extractChecksumForInstaller(text, installerName) {
+  const escapedName = String(installerName || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const linePattern = new RegExp(`^\\s*([a-f0-9]{64})\\s+[* ]?${escapedName}\\s*$`, 'i');
+  const reverseLinePattern = new RegExp(`^\\s*${escapedName}\\s+([a-f0-9]{64})\\s*$`, 'i');
+
+  for (const line of String(text || '').split(/\r?\n/)) {
+    const match = line.match(linePattern) || line.match(reverseLinePattern);
+    if (match) return match[1].toLowerCase();
+  }
+
+  return null;
+}
+
+async function resolveInstallerChecksum(release, installer) {
+  const assetDigest = normalizeChecksum(installer.digest);
+  if (assetDigest) return assetDigest;
+
+  const checksumAsset = detectChecksumAsset(release.assets || [], installer);
+  if (!checksumAsset || !checksumAsset.browser_download_url) return null;
+
+  try {
+    const response = await fetch(checksumAsset.browser_download_url, { headers: { Accept: 'text/plain' } });
+    if (!response.ok) return null;
+    return extractChecksumForInstaller(await response.text(), installer.name);
+  } catch (error) {
+    return null;
+  }
 }
 
 function applyInlineMarkdown(text) {
@@ -254,11 +294,38 @@ function setLoadingState() {
   if (elements.releaseHeading) {
     elements.releaseHeading.textContent = 'Loading release notes...';
   }
-  if (elements.checksumBox) elements.checksumBox.hidden = true;
+  if (elements.checksumBox) elements.checksumBox.hidden = false;
+  if (elements.checksum) elements.checksum.textContent = 'Checking the published release...';
   if (elements.checksumMessage) elements.checksumMessage.textContent = 'Checking for an available checksum...';
+  if (elements.copyChecksumButton) {
+    elements.copyChecksumButton.disabled = true;
+    elements.copyChecksumButton.setAttribute('aria-disabled', 'true');
+  }
   if (elements.errorState) {
     elements.errorState.hidden = true;
     elements.errorState.innerHTML = '';
+  }
+}
+
+function renderChecksum(checksum) {
+  if (!elements.checksum || !elements.checksumMessage) return;
+
+  if (checksum) {
+    elements.checksum.textContent = checksum;
+    elements.checksumMessage.textContent = 'SHA-256 published for the exact Windows installer above.';
+    if (elements.copyChecksumButton) {
+      elements.copyChecksumButton.disabled = false;
+      elements.copyChecksumButton.setAttribute('aria-disabled', 'false');
+      elements.copyChecksumButton.setAttribute('aria-label', 'Copy SHA-256 checksum');
+    }
+    return;
+  }
+
+  elements.checksum.textContent = 'SHA-256 checksum unavailable for this release.';
+  elements.checksumMessage.textContent = 'SHA-256 checksum unavailable for this release.';
+  if (elements.copyChecksumButton) {
+    elements.copyChecksumButton.disabled = true;
+    elements.copyChecksumButton.setAttribute('aria-disabled', 'true');
   }
 }
 
@@ -277,7 +344,7 @@ function setDownloadUnavailable(message) {
   }
 }
 
-function renderRelease(release, installer) {
+async function renderRelease(release, installer) {
   const versionText = formatVersion(release.tag_name || release.name || 'Latest');
   const dateText = formatReleaseDate(release.published_at);
   const installerName = installer.name || 'LockBytes installer';
@@ -316,15 +383,8 @@ function renderRelease(release, installer) {
     elements.releaseHeading.textContent = `What's New in ${versionText}`;
   }
 
-  const checksumAsset = detectChecksumAsset(release.assets || []);
-  if (checksumAsset && elements.checksumBox && elements.checksum && elements.checksumMessage) {
-    elements.checksumBox.hidden = false;
-    elements.checksum.textContent = checksumAsset.name;
-    elements.checksumMessage.textContent = 'Checksum file is available for verification.';
-  } else if (elements.checksumBox && elements.checksumMessage) {
-    elements.checksumBox.hidden = true;
-    elements.checksumMessage.textContent = 'Checksum not provided for this release.';
-  }
+  if (elements.releaseLink && release.html_url) elements.releaseLink.href = release.html_url;
+  renderChecksum(await resolveInstallerChecksum(release, installer));
 }
 
 function renderNoInstallerState(release) {
@@ -354,8 +414,8 @@ function renderNoInstallerState(release) {
   }
 
   if (elements.checksumBox && elements.checksumMessage) {
-    elements.checksumBox.hidden = true;
-    elements.checksumMessage.textContent = 'Checksum not provided for this release.';
+    elements.checksumBox.hidden = false;
+    renderChecksum(null);
   }
 }
 
@@ -394,7 +454,7 @@ function renderErrorState(message) {
   }
 
   if (elements.checksumMessage) {
-    elements.checksumMessage.textContent = 'Checksum information is unavailable at the moment.';
+    renderChecksum(null);
   }
 
   const retryButton = document.querySelector('[data-retry-button]');
@@ -429,12 +489,36 @@ async function fetchLatestRelease() {
       return;
     }
 
-    renderRelease(release, installer);
+    await renderRelease(release, installer);
   } catch (error) {
     renderErrorState(error && error.message ? error.message : 'Unable to load the latest LockBytes release.');
   }
 }
 
+async function copyChecksum() {
+  const checksum = elements.checksum?.textContent?.trim();
+  if (!checksum || !/^[a-f0-9]{64}$/i.test(checksum) || !elements.copyChecksumButton) return;
+
+  try {
+    await navigator.clipboard.writeText(checksum);
+  } catch (error) {
+    const textArea = document.createElement('textarea');
+    textArea.value = checksum;
+    textArea.setAttribute('readonly', '');
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    textArea.remove();
+  }
+
+  const originalLabel = elements.copyChecksumButton.textContent;
+  elements.copyChecksumButton.textContent = 'Copied';
+  setTimeout(() => { elements.copyChecksumButton.textContent = originalLabel; }, 1600);
+}
+
 window.addEventListener('DOMContentLoaded', () => {
+  elements.copyChecksumButton?.addEventListener('click', copyChecksum);
   fetchLatestRelease();
 });
