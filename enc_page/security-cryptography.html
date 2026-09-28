@@ -1,0 +1,722 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <script>
+        (function() {
+            try {
+                var t = localStorage.getItem('lockbytes-theme');
+                document.documentElement.setAttribute('data-theme', t === 'dark' || t === 'light' ? t : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'))
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark')
+            }
+        })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Understand LockBytes security architecture, file encryption, USB security layer, recovery boundaries, and cryptography in plain language.">
+    <title>Security &amp; Cryptography | LockBytes</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container nav-container">
+        <a href="../index.html" class="brand" aria-label="LockBytes home">
+          <img src="../img/lockbytes_logo_transparent_kb.png"
+               alt=""
+               width="32"
+               height="32"
+               class="brand-logo">
+          <span>LockBytes</span></a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="../index.html">Home</a><a href="security-cryptography.html" aria-current="page">Security</a>
+          <a class="youtube-nav-link"
+             href="https://www.youtube.com/watch?v=yhuIspwCHjM&amp;list=PLA3EXU3yKvnE"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="How to set-up LockBytes on YouTube">
+            <svg aria-hidden="true"
+                 width="18"
+                 height="14"
+                 viewBox="0 0 20 15"
+                 fill="currentColor">
+              <path d="M19.6 2.35a2.5 2.5 0 0 0-1.76-1.76C16.29.17 10 .17 10 .17s-6.29 0-7.84.42A2.5 2.5 0 0 0 .4 2.35 26 26 0 0 0 0 7.5a26 26 0 0 0 .4 5.15 2.5 2.5 0 0 0 1.76 1.76c1.55.42 7.84.42 7.84.42s6.29 0 7.84-.42a2.5 2.5 0 0 0 1.76-1.76A26 26 0 0 0 20 7.5a26 26 0 0 0-.4-5.15ZM8 10.72V4.28L13.55 7.5 8 10.72Z" />
+            </svg>
+            <span>How to set-up</span></a>
+          <a href="https://codagewithrahul.github.io/support/index.html"
+             target="_blank"
+             rel="noopener noreferrer">Support LockBytes</a>
+        </nav>
+        <button class="theme-toggle"
+                type="button"
+                data-theme-toggle
+                aria-label="Switch theme"
+                aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">☀</span><span class="theme-label">Theme</span>
+        </button>
+        <a href="../download.html" class="nav-button">Download</a>
+      </div>
+    </header>
+    <main>
+      <section class="security-hero">
+        <div class="container">
+          <p class="eyebrow">
+            <span class="status-dot" aria-hidden="true"></span>Security, explained plainly
+          </p>
+          <h1>
+            Security &amp; <em>Cryptography</em>
+          </h1>
+          <p class="lead">
+            A clear guide to what LockBytes protects, how its layers fit together, and where their boundaries are. LockBytes is Windows file encryption software; it does not make every part of a device or workflow secure.
+          </p>
+          <div class="security-actions">
+            <a class="button button-primary" href="../download.html">Get LockBytes <span aria-hidden="true">→</span></a><a class="button button-secondary" href="#model">Explore the model</a>
+          </div>
+        </div>
+      </section>
+      <section id="model" class="section security-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-label">01 / PROTECTION MODEL</p>
+            <h2>Several controls, each with a clear job.</h2>
+            <p>
+              LockBytes combines file encryption with a registered USB security layer. Optional Google Drive recovery is a separate path. Each control addresses a different part of the workflow.
+            </p>
+          </div>
+          <div class="security-grid">
+            <article class="security-card">
+              <h3>Encrypted files</h3>
+              <p>
+                LockBytes uses AES-256-GCM for file encryption. Authenticated encryption is designed to detect changes to encrypted data.
+              </p>
+            </article><article class="security-card">
+            <h3>Registered USB layer</h3>
+            <p>
+              A registered USB device adds a physical possession check to normal vault operations. It complements encryption and does not replace a strong unlock secret.
+            </p>
+          </article><article class="security-card">
+          <h3>Optional recovery</h3>
+          <p>
+            Google Drive recovery is optional and depends on the account and configuration you choose. Review the recovery flow and privacy information before enabling it.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section id="cryptography" class="section security-section crypto-section">
+    <span id="encryption" class="crypto-anchor" aria-hidden="true"></span>
+    <div class="container">
+      <div class="section-heading">
+        <p class="section-label">02 / CRYPTOGRAPHIC IMPLEMENTATION</p>
+        <h2>See the cryptography behind LockBytes.</h2>
+        <p>
+          LockBytes uses established cryptographic primitives rather than proprietary encryption algorithms. The simplified example below demonstrates AES-256-GCM authenticated encryption and Argon2id-based key derivation.
+        </p>
+        <span class="crypto-code-badge">PUBLIC EXAMPLE · PYTHON</span>
+      </div>
+      <div class="crypto-architecture-wrap">
+        <div class="crypto-title-row">
+          <h3>How the encryption pipeline works</h3>
+          <span class="muted">Illustrative processing flow</span>
+        </div>
+        <div class="crypto-architecture"
+             role="img"
+             aria-label="Illustration of a file divided into 4 MB chunks, encrypted with AES-256-GCM, authenticated, and stored as a BURI encrypted file.">
+          <div class="crypto-node" style="--step:0">
+            <span class="crypto-node-icon">FILE</span><strong>Original file</strong><small>Input data</small>
+          </div>
+          <div class="crypto-connector" aria-hidden="true">
+            <i></i>
+          </div>
+          <div class="crypto-node" style="--step:1">
+            <span class="crypto-node-icon">CHUNK</span><strong>4 MB chunks</strong><small>Bounded processing</small>
+          </div>
+          <div class="crypto-connector" aria-hidden="true">
+            <i></i>
+          </div>
+          <div class="crypto-node" style="--step:2">
+            <span class="crypto-node-icon">AES-256-GCM</span><strong>Authenticated encryption</strong><small>Confidentiality + integrity</small>
+          </div>
+          <div class="crypto-connector" aria-hidden="true">
+            <i></i>
+          </div>
+          <div class="crypto-node" style="--step:3">
+            <span class="crypto-node-icon">VERIFY</span><strong>Authentication tag</strong><small>Modification detection</small>
+          </div>
+          <div class="crypto-connector" aria-hidden="true">
+            <i></i>
+          </div>
+          <div class="crypto-node" style="--step:4">
+            <span class="crypto-node-icon">.BURI</span><strong>Encrypted output</strong><small>Protected file</small>
+          </div>
+        </div>
+      </div>
+      <div class="crypto-chunk-demo">
+        <div class="crypto-title-row">
+          <div>
+            <h3>Chunking, visually</h3>
+            <p class="muted">A static example; no files are read, uploaded, or processed.</p>
+          </div>
+          <button type="button"
+                  class="button button-secondary crypto-demo-button"
+                  data-crypto-demo
+                  aria-label="Replay the illustrative chunk encryption animation">Replay demonstration</button>
+        </div>
+        <div class="crypto-demo-flow">
+          <div class="crypto-file-chip">
+            ▧ <strong>example.jpg</strong>
+          </div>
+          <div class="crypto-chunks"
+               aria-label="Four illustrative 4 MB processing chunks">
+            <span>Chunk 01</span><span>Chunk 02</span><span>Chunk 03</span><span>Chunk 04</span><small>4 MB processing chunks</small>
+          </div>
+          <div class="crypto-engine">AES-256-GCM</div>
+          <div class="crypto-chunks crypto-chunks-encrypted"
+               aria-label="Four illustrative encrypted chunks">
+            <span>Encrypted Chunk 01</span><span>Encrypted Chunk 02</span><span>Encrypted Chunk 03</span><span>Encrypted Chunk 04</span>
+          </div>
+          <div class="crypto-file-chip crypto-output">
+            ▧ <strong>example_XXXXXXXX.buri</strong>
+          </div>
+        </div>
+      </div>
+      <div class="crypto-code"
+           aria-label="Simplified public Python cryptographic example">
+        <div class="crypto-code-header">
+          <div>
+            <h3>Cryptographic implementation</h3>
+            <span class="crypto-code-badge">PUBLIC EXAMPLE · SIMPLIFIED</span>
+          </div>
+          <div class="crypto-code-tools">
+            <span class="crypto-code-badge">Python</span>
+            <button class="crypto-copy-button"
+                    type="button"
+                    data-crypto-copy
+                    aria-label="Copy cryptographic example code">Copy code</button>
+          </div>
+        </div>
+        <div class="crypto-code-scroll"
+             tabindex="0"
+             aria-label="Python code, horizontally scrollable">
+          <pre><code id="crypto-rendered-code"></code></pre>
+        </div>
+        <textarea id="crypto-source-code" class="crypto-source-code" aria-hidden="true" tabindex="-1" readonly>from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+from argon2.low_level import hash_secret_raw, Type
+import os
+
+AES_KEY_SIZE = 32
+GCM_NONCE_SIZE = 12
+
+def generate_encryption_key():
+    """
+    Generate a cryptographically secure 256-bit AES key.
+    """
+    return os.urandom(AES_KEY_SIZE)
+
+def generate_nonce():
+    """
+    Generate a fresh 96-bit nonce for AES-GCM.
+    """
+    return os.urandom(GCM_NONCE_SIZE)
+
+def encrypt_data(data: bytes, key: bytes) -> bytes:
+    """
+    Encrypt and authenticate data using AES-256-GCM.
+    """
+    aesgcm = AESGCM(key)
+    nonce = generate_nonce()
+
+    ciphertext = aesgcm.encrypt(
+        nonce,
+        data,
+        None
+    )
+
+    # The nonce is not secret and can be
+    # stored alongside the ciphertext.
+    return nonce + ciphertext
+
+def decrypt_data(
+    encrypted_data: bytes,
+    key: bytes
+) -> bytes:
+    nonce = encrypted_data[:GCM_NONCE_SIZE]
+    ciphertext = encrypted_data[GCM_NONCE_SIZE:]
+
+    aesgcm = AESGCM(key)
+
+    return aesgcm.decrypt(
+        nonce,
+        ciphertext,
+        None
+    )
+
+def derive_key_from_password(
+    password: str,
+    salt: bytes,
+    time_cost: int = 3,
+    memory_cost: int = 65536,
+    parallelism: int = 4,
+) -> bytes:
+    return hash_secret_raw(
+        secret=password.encode("utf-8"),
+        salt=salt,
+        time_cost=time_cost,
+        memory_cost=memory_cost,
+        parallelism=parallelism,
+        hash_len=AES_KEY_SIZE,
+        type=Type.ID,
+    )</textarea>
+        <div class="crypto-copy-status"
+             role="status"
+             aria-live="polite"
+             data-crypto-status></div>
+      </div>
+      <div class="crypto-disclaimer">
+        <strong>Public Example — Simplified</strong>
+        <p>
+          This example demonstrates the cryptographic primitives used by LockBytes. It is intentionally simplified for transparency and education. The production application contains additional file-format handling, validation, key management, recovery logic, and platform-specific security controls.
+        </p>
+        <p>
+          Cryptographic security depends not only on the algorithm, but also on correct key management, nonce management, implementation, operating-system security, and the user's overall security environment.
+        </p>
+        <p class="muted">This displayed code is a simplified public example, not the complete production source code.</p>
+      </div>
+      <div class="crypto-explanation-grid">
+        <article class="security-card">
+          <h3>AES-256-GCM</h3>
+          <p>
+            AES-256-GCM provides authenticated encryption using a 256-bit key. In addition to protecting confidentiality, GCM provides authentication that allows modified ciphertext to be detected.
+          </p>
+        </article><article class="security-card">
+        <h3>Fresh nonces</h3>
+        <p>
+          AES-GCM requires nonce uniqueness when used with the same key. LockBytes uses nonce construction appropriate to its chunked encryption workflow.
+        </p>
+      </article><article class="security-card">
+      <h3>Argon2id</h3>
+      <p>
+        Passwords are not used directly as AES keys. Argon2id derives 256-bit key material using a salt and configurable computational and memory parameters.
+      </p>
+    </article>
+  </div>
+  <div class="crypto-architecture-wrap crypto-kdf-wrap">
+    <div class="crypto-title-row">
+      <h3>Password-based key derivation</h3>
+      <span class="muted">Illustrative Argon2id flow</span>
+    </div>
+    <div class="crypto-key-flow"
+         role="img"
+         aria-label="Illustration of a user password and random salt passed through Argon2id to derive 256-bit key material, used to protect a key with AES-256-GCM.">
+      <div class="crypto-key-node" style="--step:0">
+        <strong>User password</strong>
+      </div>
+      <div class="crypto-key-connector">
+        <i></i>
+      </div>
+      <div class="crypto-key-node" style="--step:1">
+        <strong>Random salt</strong>
+      </div>
+      <div class="crypto-key-connector">
+        <i></i>
+      </div>
+      <div class="crypto-key-node" style="--step:2">
+        <strong>Argon2id</strong>
+      </div>
+      <div class="crypto-key-connector">
+        <i></i>
+      </div>
+      <div class="crypto-key-node" style="--step:3">
+        <strong>256-bit key material</strong>
+      </div>
+      <div class="crypto-key-connector">
+        <i></i>
+      </div>
+      <div class="crypto-key-node" style="--step:4">
+        <strong>AES-256-GCM</strong>
+      </div>
+      <div class="crypto-key-connector">
+        <i></i>
+      </div>
+      <div class="crypto-key-node" style="--step:5">
+        <strong>Protected key material</strong>
+      </div>
+    </div>
+    <div class="crypto-parameters">
+      <div>
+        <span>TIME COST</span><strong>3</strong>
+      </div>
+      <div>
+        <span>MEMORY COST</span><strong>64 MiB</strong>
+      </div>
+      <div>
+        <span>PARALLELISM</span><strong>4</strong>
+      </div>
+      <div>
+        <span>DERIVED KEY</span><strong>256-bit</strong>
+      </div>
+    </div>
+    <p class="security-callout">
+      These are the parameters demonstrated in this public example. Cryptographic parameters should be selected according to the application's threat model, platform capabilities, and security requirements.
+    </p>
+  </div>
+  <div class="crypto-master-key">
+    <div class="section-heading">
+      <p class="section-label">KEY PROTECTION</p>
+      <h3>Keys are protected separately from file contents.</h3>
+      <p>
+        This architectural illustration shows two conceptual protection paths. It contains no real key material or production secrets.
+      </p>
+    </div>
+    <div class="crypto-master-root">
+      Master Key <small>illustrative only</small>
+    </div>
+    <div class="crypto-master-branches">
+      <div class="crypto-master-branch">
+        <strong>Password-based protection</strong><span>↓</span><b>Argon2id</b><span>↓</span><b>AES-256-GCM</b>
+      </div>
+      <div class="crypto-master-branch">
+        <strong>Recovery protection</strong><span>↓</span><b>Recovery key material</b><span>↓</span><b>AES-256-GCM</b>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<section id="keys" class="section security-section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-label">03 / KEY HANDLING</p>
+      <h2>Keys are the critical material.</h2>
+      <p>
+        Encryption protects data only while the relevant key material remains unavailable to an attacker. Protect your account, device, unlock credentials, and any recovery method.
+      </p>
+    </div>
+    <div class="security-grid">
+      <article class="security-card">
+        <h3>Keep credentials private</h3>
+        <p>
+          Do not share passwords, recovery information, or authentication codes. Avoid storing them beside the files they protect.
+        </p>
+      </article><article class="security-card">
+      <h3>Protect the running device</h3>
+      <p>Malware or an attacker with access to an unlocked computer may capture plaintext or credentials while you work.</p>
+    </article><article class="security-card">
+    <h3>Make a recovery plan</h3>
+    <p>
+      Understand what you need to regain access before relying on an encrypted vault. Test recovery with noncritical data first.
+    </p>
+  </article>
+</div>
+</div>
+</section>
+<section id="usb" class="section security-section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-label">04 / USB SECURITY LAYER</p>
+      <h2>Physical possession adds a check.</h2>
+      <p>
+        LockBytes includes a registered USB security layer for normal vault operations. Keep the registered device under your control and maintain a safe plan if it is lost or damaged.
+      </p>
+    </div>
+    <div class="security-flow" aria-label="USB security layer overview">
+      <div class="security-flow-step">
+        <b>REGISTER</b><strong>Enroll device</strong>
+        <p>Register the intended USB device through LockBytes.</p>
+      </div>
+      <div class="security-flow-step">
+        <b>CONNECT</b><strong>Present device</strong>
+        <p>Connect the registered device when the workflow requires it.</p>
+      </div>
+      <div class="security-flow-step">
+        <b>CHECK</b><strong>Validate access</strong>
+        <p>The security layer checks for the registered device.</p>
+      </div>
+      <div class="security-flow-step">
+        <b>OPERATE</b><strong>Use the vault</strong>
+        <p>Continue only through the application's permitted workflow.</p>
+      </div>
+      <div class="security-flow-step">
+        <b>CARE</b><strong>Keep it safe</strong>
+        <p>Protect the USB device and use the documented recovery options.</p>
+      </div>
+    </div>
+    <div class="security-callout">
+      A USB check is not a substitute for encryption, endpoint security, or a backup. Anyone who can use an already unlocked device may still access available plaintext.
+    </div>
+  </div>
+</section>
+<section id="recovery" class="section security-section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-label">05 / RECOVERY</p>
+      <h2>Recovery changes the access story.</h2>
+      <p>
+        Optional Google Drive recovery can help restore access under the configured recovery process. It introduces an online account and service into the recovery path.
+      </p>
+    </div>
+    <div class="security-grid">
+      <article class="security-card">
+        <h3>Opt in deliberately</h3>
+        <p>
+          Choose whether to configure recovery and understand what data is involved by reading the current privacy policy and in-app explanations.
+        </p>
+      </article><article class="security-card">
+      <h3>Secure your Google account</h3>
+      <p>
+        Use a unique password and multifactor authentication where available. Account compromise can affect services tied to that account.
+      </p>
+    </article><article class="security-card">
+    <h3>Check that recovery works</h3>
+    <p>
+      Keep recovery details current and confirm you can complete the process before depending on it for important files.
+    </p>
+  </article>
+</div>
+<p class="muted" style="margin-top:18px">
+  Cloud recovery is not the same as a local-first workflow. Availability and behavior can depend on Google services, connectivity, account access, and LockBytes configuration.
+</p>
+</div>
+</section>
+<section id="data" class="section security-section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-label">06 / DATA FLOW</p>
+      <h2>Know where data may travel.</h2>
+      <p>
+        Normal vault operations are described as local-first. Optional online features have their own data flows and service dependencies.
+      </p>
+    </div>
+    <div class="security-code">
+      <div class="security-code-head">
+        <span>Simplified operating paths</span><span>Conceptual diagram</span>
+      </div>
+      <pre><code>Local file → LockBytes on Windows → encrypted output
+                         │
+                         ├─ registered USB check for vault operations
+                         │
+                         └─ optional recovery setup → Google Drive / account services</code></pre>
+    </div>
+    <p class="security-callout">
+      This diagram is a high-level guide, not a network trace. For exact collection and processing details, consult the privacy policy and the application's current documentation.
+    </p>
+  </div>
+</section>
+<section id="threats" class="section security-section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-label">07 / THREAT MODEL</p>
+      <h2>What the layers help address.</h2>
+      <p>Security depends on the attacker's access and the state of your device. These examples are deliberately bounded.</p>
+    </div>
+    <div class="security-grid">
+      <article class="security-card">
+        <h3>Lost storage device</h3>
+        <p>
+          Encrypted files can help protect contents when a storage device is lost, provided the keys and credentials remain protected.
+        </p>
+      </article><article class="security-card">
+      <h3>Unauthorized vault operation</h3>
+      <p>
+        The registered USB layer adds a possession check to the supported workflow. It does not defeat a compromised or unlocked computer.
+      </p>
+    </article><article class="security-card">
+    <h3>Compromised endpoint</h3>
+    <p>
+      Malware, keyloggers, or privileged access can expose files while they are open. Encryption at rest cannot fully protect an infected active device.
+    </p>
+  </article>
+</div>
+</div>
+</section>
+<section id="limits" class="section security-section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-label">08 / BOUNDARIES</p>
+      <h2>Good security includes honest limits.</h2>
+      <p>
+        LockBytes focuses on protecting files through encryption and its supported access workflow. It is not a complete endpoint defense or a replacement for backups.
+      </p>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="security-table">
+        <thead>
+          <tr>
+            <th>Situation</th>
+            <th>What to understand</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>File is open</td>
+            <td>Plaintext may be available to the operating system, applications, or an attacker controlling the device.</td>
+          </tr>
+          <tr>
+            <td>Weak or exposed credentials</td>
+            <td>Anyone who obtains valid access information may undermine protections that depend on it.</td>
+          </tr>
+          <tr>
+            <td>Lost USB device</td>
+            <td>Follow the documented recovery process; possession checks do not replace a recovery plan.</td>
+          </tr>
+          <tr>
+            <td>Device failure or deletion</td>
+            <td>Encryption does not preserve data. Maintain separate backups and verify they can be restored.</td>
+          </tr>
+          <tr>
+            <td>Cloud account compromise</td>
+            <td>Optional recovery can depend on account security and third-party service availability.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<section id="practice" class="section security-section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-label">09 / PRACTICAL SECURITY</p>
+      <h2>Small habits make the design work better.</h2>
+      <p>Protect the whole workflow: the files, computer, credentials, USB device, and recovery path.</p>
+    </div>
+    <div class="security-grid">
+      <article class="security-card">
+        <h3>Get releases from the official page</h3>
+        <p>Use the LockBytes download page and review release details. Verify checksums when they are provided.</p>
+      </article><article class="security-card">
+      <h3>Keep Windows protected</h3>
+      <p>Install security updates, use reputable endpoint protection, and lock the screen when you step away.</p>
+    </article><article class="security-card">
+    <h3>Back up separately</h3>
+    <p>Keep protected backups in a separate location and periodically test restoring them.</p>
+  </article><article class="security-card">
+  <h3>Use unique credentials</h3>
+  <p>Use a password manager and do not reuse passwords across your Windows, Google, and other accounts.</p>
+</article><article class="security-card">
+<h3>Handle plaintext carefully</h3>
+<p>Close files when finished and consider temporary files, exports, and copies created by other applications.</p>
+</article><article class="security-card">
+<h3>Review recovery settings</h3>
+<p>Understand what is enabled and keep account recovery methods current and protected.</p>
+</article>
+</div>
+</div>
+</section>
+<section id="summary" class="section security-section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-label">10 / SUMMARY</p>
+      <h2>A layered tool with explicit boundaries.</h2>
+      <p>
+        LockBytes combines AES-256-GCM file encryption and a registered USB security layer for Windows workflows, with optional Google Drive recovery. The security outcome still depends on sound key handling, a protected device, and a recovery plan.
+      </p>
+    </div>
+    <div class="security-grid">
+      <article class="security-card">
+        <h3>Read the privacy policy</h3>
+        <p>Understand the data flows and optional services before enabling connected features.</p>
+        <a class="text-link" href="../privacy_policy/index.html">Privacy Policy →</a></article><article class="security-card">
+          <h3>Review the software terms</h3>
+          <p>See the license and use terms that apply to LockBytes.</p>
+          <a class="text-link" href="../terms_of_use/index.html">Terms of Use →</a></article><article class="security-card">
+            <h3>Get the official release</h3>
+            <p>Download LockBytes for Windows from the project download page.</p>
+            <a class="text-link" href="../download.html">Download LockBytes →</a></article>
+        </div>
+      </div>
+    </section>
+    <section class="security-end">
+      <div class="container">
+        <p class="section-label">LOCKBYTES</p>
+        <h2>Protect files with a clearer model.</h2>
+        <div class="security-actions" style="justify-content:center">
+          <a class="button button-primary" href="../download.html">Download LockBytes</a><a class="button button-secondary" href="../index.html">Back to overview</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="brand">
+          <img src="../img/lockbytes_logo_transparent_kb.png"
+               alt=""
+               width="32"
+               height="32"
+               class="brand-logo">
+          <span>LockBytes</span></a>
+        <p>Windows file encryption with a physical USB security layer and optional recovery protection.</p>
+        <p class="developer">Developed by Rahul Gupta.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Product</h4>
+        <a href="#architecture">Architecture</a><a href="#usb-layer">USB layer</a><a href="#recovery">Recovery</a><a href="#features">Features</a><a href="#support">Support</a>
+      </div>
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <a href="../privacy_policy/index.html">Privacy Policy</a><a href="../terms_of_use/index.html">Terms of Use</a><a href="../software_license/index.html">Software License</a>
+      </div>
+      <div class="footer-column">
+        <h4>Resources</h4>
+        <a href="../download.html">Download</a><a href="https://codagewithrahul.github.io/support/index.html"
+   target="_blank"
+   rel="noopener noreferrer">Support LockBytes</a><a href="https://github.com/CodageWithRahul/LockBytes"
+   target="_blank"
+   rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 LockBytes. All rights reserved.</span><span>Independent software project.</span>
+    </div>
+  </footer>
+  <script>
+      (function() {
+          const source = document.getElementById('crypto-source-code');
+          const rendered = document.getElementById('crypto-rendered-code');
+          if (!source || !rendered) return;
+          const escapeHtml = (value) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          let inDocstring = false;
+          rendered.innerHTML = source.value.replace(/\r\n/g, '\n').split('\n').map((line) => {
+              let safe = escapeHtml(line);
+              if (inDocstring || line.includes('"""')) {
+                  safe = '<span class="token-string">' + safe + '</span>';
+                  if ((line.match(/"""/g) || []).length % 2) inDocstring = !inDocstring;
+              } else {
+                  safe = safe.replace(/(#.*$|"(?:\\.|[^"])*"|'(?:\\.|[^'])*'|\b(?:from|import|as|def|return|None|True|False|if)\b|\b(?:bytes|str|int)\b|\b\d+\b)/g, (token) => {
+                      const cls = token.startsWith('#') ? 'token-comment' : (token.startsWith('"') || token.startsWith("'")) ? 'token-string' : /^\d+$/.test(token) ? 'token-number' : 'token-keyword';
+                      return '<span class="' + cls + '">' + token + '</span>';
+                  });
+                  safe = safe.replace(/\b(AESGCM|Type|os|hash_secret_raw)\b/g, '<span class="token-name">$1</span>');
+              }
+              return '<span class="crypto-code-line">' + (safe || ' ') + '</span>';
+          }).join('');
+          const copyButton = document.querySelector('[data-crypto-copy]');
+          const status = document.querySelector('[data-crypto-status]');
+          let resetTimer;
+          copyButton?.addEventListener('click', async () => {
+              try {
+                  await navigator.clipboard.writeText(source.value.trim());
+              } catch (error) {
+                  source.select();
+                  document.execCommand('copy');
+                  source.setSelectionRange(0, 0);
+              }
+              copyButton.textContent = 'Copied';
+              if (status) status.textContent = 'Cryptographic example copied to clipboard.';
+              clearTimeout(resetTimer);
+              resetTimer = setTimeout(() => {
+                  copyButton.textContent = 'Copy code';
+                  if (status) status.textContent = '';
+              }, 2000);
+          });
+          const demo = document.querySelector('.crypto-chunk-demo');
+          document.querySelector('[data-crypto-demo]')?.addEventListener('click', () => {
+              demo?.classList.remove('is-running');
+              void demo?.offsetWidth;
+              demo?.classList.add('is-running');
+              setTimeout(() => demo?.classList.remove('is-running'), 2800);
+          });
+      })();
+  </script>
+  <script src="../theme.js" defer></script>
+</body>
+</html>
