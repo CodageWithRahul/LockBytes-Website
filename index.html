@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -15,433 +16,776 @@
                 }
             })();
         </script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description"
-              content="LockBytes encrypts sensitive files on Windows and adds a registered USB security layer, with optional Google Drive recovery protection.">
-        <meta name="keywords"
-              content="LockBytes, file encryption, AES-256-GCM, USB security, Windows file vault, Google Drive recovery">
-        <meta name="author" content="Rahul Gupta">
-        <meta property="og:title"
-              content="LockBytes | Encrypted files with a physical security layer">
-        <meta property="og:description"
-              content="Local-first Windows file encryption with a registered USB security layer and optional Google Drive recovery.">
-        <meta property="og:type" content="website">
-        <title>LockBytes | Encrypted files with a physical security layer</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <header class="navbar">
-            <div class="container nav-container">
-                <a href="index.html" class="brand" aria-label="LockBytes home">
-                    <img src="img/lockbytes_logo_transparent_kb.png"
-                         alt=""
-                         width="32"
-                         height="32"
-                         class="brand-logo">
-                    <span>LockBytes</span></a>
-                <nav class="nav-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="enc_page/security-cryptography.html">Security</a><a class="youtube-nav-link" href="https://www.youtube.com/watch?v=yhuIspwCHjM&amp;list=PLA3EXU3yKvnE" target="_blank" rel="noopener noreferrer" aria-label="How to set-up LockBytes on YouTube"><svg aria-hidden="true" width="18" height="14" viewBox="0 0 20 15" fill="currentColor"><path d="M19.6 2.35a2.5 2.5 0 0 0-1.76-1.76C16.29.17 10 .17 10 .17s-6.29 0-7.84.42A2.5 2.5 0 0 0 .4 2.35 26 26 0 0 0 0 7.5a26 26 0 0 0 .4 5.15 2.5 2.5 0 0 0 1.76 1.76c1.55.42 7.84.42 7.84.42s6.29 0 7.84-.42a2.5 2.5 0 0 0 1.76-1.76A26 26 0 0 0 20 7.5a26 26 0 0 0-.4-5.15ZM8 10.72V4.28L13.55 7.5 8 10.72Z"/></svg><span>How to set-up</span></a><a href="https://codagewithrahul.github.io/support/index.html" target="_blank" rel="noopener noreferrer">Support LockBytes</a></nav>
-                <button class="theme-toggle"
-                        type="button"
-                        data-theme-toggle
-                        aria-label="Switch to light mode"
-                        aria-pressed="false">
-                    <span class="theme-icon" aria-hidden="true">☀</span><span class="theme-label">Light mode</span>
-                </button>
-                <a href="download.html" class="nav-button">Download</a>
-            </div>
-        </header>
-        <main>
-            <section class="hero" aria-labelledby="hero-title">
-                <div class="hero-grid container">
-                    <div class="hero-copy">
-                        <p class="eyebrow">
-                            <span class="status-dot" aria-hidden="true"></span>Windows security software
-                        </p>
-                        <h1 id="hero-title">
-                            Your files.
-                            <br>
-                            <em>Encrypted.</em>
-                            <br>
-                            Physically protected.
-                        </h1>
-                        <p class="hero-lede">
-                            LockBytes combines AES-256-GCM file encryption with a registered USB security layer, keeping normal vault operations on your own Windows device.
-                        </p>
-                        <div class="hero-actions">
-                            <a href="download.html" class="button button-primary">Download for Windows <span aria-hidden="true">→</span></a><a href="#architecture" class="button button-secondary">See the protection model</a>
-                        </div>
-                        <p class="hero-footnote">
-                            <span aria-hidden="true">●</span> Windows 10 / 11 <span aria-hidden="true">·</span> Local-first by design
-                        </p>
-                    </div>
-                    <div class="hero-visual"
-                         aria-label="LockBytes protection model: file, encryption, USB vault, and recovery"
-                         role="img">
-                        <div class="visual-grid"></div>
-                        <div class="orbit orbit-one"></div>
-                        <div class="orbit orbit-two"></div>
-                        <div class="core-lock">
-                            <span class="lock-shackle"></span><span class="lock-body"></span>
-                        </div>
-                        <div class="visual-node node-file">
-                            <span class="node-glyph">▤</span><strong>YOUR FILES</strong><small>documents · photos · videos</small>
-                        </div>
-                        <div class="visual-node node-usb">
-                            <span class="node-glyph">▣</span><strong>USB VAULT</strong><small>registered device</small>
-                        </div>
-                        <div class="visual-node node-recovery">
-                            <span class="node-glyph">↗</span><strong>RECOVERY</strong><small>your Google Drive</small>
-                        </div>
-                        <span class="visual-caption">LOCKBYTES VAULT
-                            <br>
-                            <b>AES-256-GCM</b></span>
-                    </div>
-                </div>
-            </section>
-            <section class="signal-strip" aria-label="LockBytes at a glance">
-                <div class="container signal-grid">
-                    <div>
-                        <strong>AES-256-GCM</strong><span>Authenticated encryption</span>
-                    </div>
-                    <div>
-                        <strong>USB-BOUND</strong><span>Physical access layer</span>
-                    </div>
-                    <div>
-                        <strong>LOCAL-FIRST</strong><span>No LockBytes file server</span>
-                    </div>
-                    <div>
-                        <strong>RECOVERY READY</strong><span>Optional Google Drive layer</span>
-                    </div>
-                </div>
-            </section>
-            <section class="section problem-section">
-                <div class="container split-intro">
-                    <div>
-                        <p class="section-label">THE SECURITY PROBLEM</p>
-                        <h2>
-                            A password is a gate.
-                            <br>
-                            <em>LockBytes adds a key.</em>
-                        </h2>
-                    </div>
-                    <div>
-                        <p class="lead">
-                            A protected file should not become readable simply because someone reaches your computer. LockBytes separates the protection model into layers: encrypted data, vault credentials, and the presence of a registered USB device.
-                        </p>
-                        <p class="muted">
-                            It is a Windows desktop vault, not cloud storage. Your files stay local during normal encryption and decryption.
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <section id="architecture" class="section architecture-section">
-                <div class="container">
-                    <div class="section-heading centered">
-                        <p class="section-label">HOW LOCKBYTES WORKS</p>
-                        <h2>From an ordinary file to a layered vault.</h2>
-                        <p>
-                            Each step has a job. Encryption protects the data; the physical layer helps control when the vault can be opened.
-                        </p>
-                    </div>
-                    <div class="flow-diagram"
-                         aria-label="File to encrypted vault to USB security layer flow">
-                        <div class="flow-step">
-                            <span class="flow-index">01</span><span class="flow-icon">▤</span><strong>Your file</strong><small>Selected locally</small>
-                        </div>
-                        <span class="flow-arrow" aria-hidden="true">→</span>
-                        <div class="flow-step active">
-                            <span class="flow-index">02</span><span class="flow-icon">✦</span><strong>Encryption</strong><small>AES-256-GCM</small>
-                        </div>
-                        <span class="flow-arrow" aria-hidden="true">→</span>
-                        <div class="flow-step">
-                            <span class="flow-index">03</span><span class="flow-icon">▰</span><strong>Encrypted vault</strong><small>Authenticated data</small>
-                        </div>
-                        <span class="flow-arrow" aria-hidden="true">→</span>
-                        <div class="flow-step accent">
-                            <span class="flow-index">04</span><span class="flow-icon">▣</span><strong>USB security layer</strong><small>Registered presence</small>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="usb-layer" class="section usb-section">
-                <div class="container usb-grid">
-                    <div class="usb-visual"
-                         aria-label="Illustration of a physical USB vault security layer"
-                         role="img">
-                        <div class="usb-port"></div>
-                        <div class="usb-stick">
-                            <span class="usb-led"></span><span class="usb-mark">LB</span>
-                        </div>
-                        <div class="usb-ring"></div>
-                        <span class="usb-label">PHYSICAL
-                            <br>
-                        SECURITY LAYER</span>
-                    </div>
-                    <div class="usb-copy">
-                        <p class="section-label">THE DIFFERENCE</p>
-                        <h2>Your encryption key is not only an idea.</h2>
-                        <p class="lead">
-                            LockBytes uses a registered USB device as part of the vault protection process. The USB is a security layer with an identity and vault metadata, not just a place to put files.
-                        </p>
-                        <div class="detail-list">
-                            <div>
-                                <span>01</span>
-                                <p>
-                                    <strong>Register</strong> Pair a USB device with your LockBytes vault.
-                                </p>
-                            </div>
-                            <div>
-                                <span>02</span>
-                                <p>
-                                    <strong>Detect</strong> The application checks for the registered device when access is needed.
-                                </p>
-                            </div>
-                            <div>
-                                <span>03</span>
-                                <p>
-                                    <strong>Unlock</strong> Physical possession works alongside the required credentials.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="section encryption-section">
-                <div class="container encryption-grid">
-                    <div>
-                        <p class="section-label">THE ENCRYPTION ENGINE</p>
-                        <h2>Strong encryption, explained plainly.</h2>
-                        <p class="lead">
-                            LockBytes uses AES-256-GCM authenticated encryption to protect encrypted file data and help detect unauthorized modification.
-                        </p>
-                        <p class="muted">
-                            Large files are processed in chunks, so the application does not need to load an entire file into memory at once. Passwords, keys, and vault metadata remain part of the local protection model.
-                        </p>
-                    </div>
-                    <div class="algorithm-panel">
-                        <div class="algorithm-header">
-                            <span>LOCKBYTES / ENCRYPTION</span><b>PROTECTED</b>
-                        </div>
-                        <div class="algorithm-row">
-                            <span>INPUT</span><strong>YOUR FILE</strong>
-                        </div>
-                        <div class="algorithm-line"></div>
-                        <div class="algorithm-row">
-                            <span>CIPHER</span><strong>AES-256-GCM</strong>
-                        </div>
-                        <div class="algorithm-row">
-                            <span>OUTPUT</span><strong>ENCRYPTED VAULT DATA</strong>
-                        </div>
-                        <div class="algorithm-badge">
-                            AUTHENTICATED DATA <span>✓</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="recovery" class="section recovery-section">
-                <div class="container recovery-layout">
-                    <div class="recovery-copy">
-                        <p class="section-label">RECOVERY PROTECTION</p>
-                        <h2>
-                            Physical protection guards access.
-                            <br>
-                            <em>Recovery protection guards against loss.</em>
-                        </h2>
-                        <p class="lead">
-                            If your registered USB is lost, damaged, or unavailable, LockBytes can use your own Google Drive account as a recovery mechanism.
-                        </p>
-                        <p class="muted">
-                            Google Drive is not needed for normal encryption or decryption. It is a separate, user-controlled recovery layer.
-                        </p>
-                        <a href="privacy_policy/index.html" class="text-link">Read how Google data is handled <span aria-hidden="true">→</span></a>
-                    </div>
-                    <div class="recovery-visual">
-                        <div class="recovery-endpoint usb-endpoint">
-                            <span>▣</span><strong>USB VAULT</strong><small>Physical layer</small>
-                        </div>
-                        <div class="recovery-connector">
-                            <span class="connector-line" aria-hidden="true"></span><span aria-hidden="true">+</span><span class="connector-line" aria-hidden="true"></span>
-                        </div>
-                        <div class="recovery-endpoint drive-endpoint">
-                            <span>G</span><strong>GOOGLE DRIVE</strong><small>LOCKBYTES_RECOVERY</small>
-                        </div>
-                        <div class="recovery-result">
-                            <span>◆</span><strong>MULTI-LAYER PROTECTION</strong><small>Encrypted recovery data</small>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="section architecture-dark">
-                <div class="container">
-                    <div class="section-heading centered">
-                        <p class="section-label">SECURITY ARCHITECTURE</p>
-                        <h2>A vault built from distinct layers.</h2>
-                        <p>The complete model, from credentials to protected files.</p>
-                    </div>
-                    <div class="architecture-stack"
-                         role="list"
-                         aria-label="LockBytes security architecture">
-                        <div role="listitem">
-                            <span>01</span><strong>Vault password</strong><small>Your secret input</small>
-                        </div>
-                        <b aria-hidden="true">↓</b>
-                        <div role="listitem">
-                            <span>02</span><strong>Protected key material</strong><small>Stored with vault metadata</small>
-                        </div>
-                        <b aria-hidden="true">↓</b>
-                        <div role="listitem" class="stack-highlight">
-                            <span>03</span><strong>Registered USB layer</strong><small>Physical presence and identity</small>
-                        </div>
-                        <b aria-hidden="true">↓</b>
-                        <div role="listitem">
-                            <span>04</span><strong>AES-256-GCM vault</strong><small>Encrypted, authenticated files</small>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="features" class="section features-section">
-                <div class="container">
-                    <div class="section-heading">
-                        <p class="section-label">CAPABILITIES</p>
-                        <h2>Everything has a place in the model.</h2>
-                        <p>Practical controls for protecting files on a Windows computer.</p>
-                    </div>
-                    <div class="feature-grid">
-                    <article class="feature-card featured"><span class="card-index">01 / CORE</span>
-                    <h3>AES-256-GCM encryption</h3>
-                    <p>Authenticated encryption for protected file data, with modification detection.</p>
-                </article><article class="feature-card"><span class="card-index">02 / ACCESS</span>
-                <h3>Registered USB vault</h3>
-                <p>USB registration, identity, metadata, presence detection, and physical access control.</p>
-            </article><article class="feature-card"><span class="card-index">03 / PRIVACY</span>
-            <h3>Local-first operation</h3>
-            <p>Normal encryption and decryption happen on your device without a LockBytes file server.</p>
-        </article><article class="feature-card"><span class="card-index">04 / SCALE</span>
-        <h3>Chunk-based processing</h3>
-        <p>Large files can be handled without loading the entire file into memory at once.</p>
-    </article><article class="feature-card"><span class="card-index">05 / RECOVERY</span>
-    <h3>Google Drive recovery</h3>
-    <p>Your own account, the Drive API, and a dedicated LOCKBYTES_RECOVERY location for encrypted recovery data.</p>
-</article><article class="feature-card"><span class="card-index">06 / CONTROL</span>
-<h3>Application and vault credentials</h3>
-<p>Separate credentials and local security material keep access under the user's control.</p>
-</article>
-</div>
-</div>
-</section>
-<section class="section trust-section">
-    <div class="container trust-layout">
-        <div>
-            <p class="section-label">CLEAR BOUNDARIES</p>
-            <h2>Security that tells you what it does.</h2>
-            <p class="lead">
-                LockBytes does not promise impossible things. It provides a local encryption and access model, while you remain responsible for credentials, USB devices, recovery data, and backups.
-            </p>
-        </div>
-        <div class="trust-table">
-            <div>
-                <span>Core file operations</span><strong>Local</strong>
-            </div>
-            <div>
-                <span>Internet for normal encryption</span><strong>Not required</strong>
-            </div>
-            <div>
-                <span>Google Drive</span><strong>Optional recovery</strong>
-            </div>
-            <div>
-                <span>LockBytes central file server</span><strong>None</strong>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="section audience-section">
-    <div class="container audience-grid">
-        <div>
-            <p class="section-label">MADE FOR</p>
-            <h2>People who want their sensitive files close, controlled, and harder to casually access.</h2>
-        </div>
-        <div class="audience-list">
-            <p>
-                <span>01</span> Personal documents, financial records, and identity files
-            </p>
-            <p>
-                <span>02</span> Photos, videos, and creative work that should stay private
-            </p>
-            <p>
-                <span>03</span> Anyone who wants a physical security layer beyond a password
-            </p>
-        </div>
-    </div>
-</section>
-<section id="support" class="section support-section">
-    <div class="container support-layout">
-        <div>
-            <p class="section-label">SUPPORT THE PROJECT</p>
-            <h2>Privacy tools matter more when they keep getting better.</h2>
-            <p class="lead">
-                Sensitive files, account takeovers, and data leaks are part of everyday life now. LockBytes gives Windows users a practical local-first way to add encryption and a physical security layer to the files they care about.
-            </p>
-            <p class="muted">
-                Your support helps keep development, documentation, recovery work, and future security improvements moving forward.
-            </p>
-        </div>
-        <div class="support-panel">
-            <div class="support-choice">
-                <span class="support-number">01</span>
-                <div><strong>Use LockBytes</strong><small>Protect your important files with the current release.</small></div>
-            </div>
-            <div class="support-choice">
-                <span class="support-number">02</span>
-                <div><strong>Support development</strong><small>Help make independent privacy software more capable and accessible.</small></div>
-            </div>
-            <a href="https://codagewithrahul.github.io/support/index.html" class="button button-primary" target="_blank" rel="noopener noreferrer">Support LockBytes <span aria-hidden="true">↗</span></a>
-        </div>
-    </div>
-</section>
-<section class="download-section">
-    <div class="container download-box">
-        <div>
-            <p class="section-label">GET STARTED</p>
-            <h2>Put a physical layer between your files and access.</h2>
-            <p>Download LockBytes for Windows and build your vault around the protection model.</p>
-        </div>
-        <a href="download.html" class="button button-primary large-button">Download LockBytes <span aria-hidden="true">→</span></a>
-    </div>
-</section>
-</main>
-<footer class="footer">
-    <div class="container footer-grid">
-        <div class="footer-brand">
-            <a href="index.html" class="brand">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="LockBytes encrypts sensitive files on Windows and adds a registered USB security layer, with optional Google Drive recovery protection.">
+
+    <meta name="keywords"
+          content="LockBytes, file encryption, AES-256-GCM, USB security, Windows file vault, Google Drive recovery">
+
+    <meta name="author" content="Rahul Gupta">
+
+    <meta property="og:title"
+          content="LockBytes | Encrypted files with a physical security layer">
+
+    <meta property="og:description"
+          content="Local-first Windows file encryption with a registered USB security layer and optional Google Drive recovery.">
+
+    <meta property="og:type" content="website">
+
+    <title>LockBytes | Encrypted files with a physical security layer</title>
+
+    <!-- Preferred homepage URL -->
+    <link rel="canonical" href="https://lockbytes.in/">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+
+            <a href="/" class="brand" aria-label="LockBytes home">
                 <img src="img/lockbytes_logo_transparent_kb.png"
                      alt=""
                      width="32"
                      height="32"
                      class="brand-logo">
-                <span>LockBytes</span></a>
-            <p>Windows file encryption with a physical USB security layer and optional recovery protection.</p>
-            <p class="developer">Developed by Rahul Gupta.</p>
-        </div>
-        <div class="footer-column">
-            <h4>Product</h4>
-            <a href="#architecture">Architecture</a><a href="#usb-layer">USB layer</a><a href="#recovery">Recovery</a><a href="#features">Features</a><a href="#support">Support</a>
-        </div>
-        <div class="footer-column">
-            <h4>Legal</h4>
-            <a href="privacy_policy/index.html">Privacy Policy</a><a href="terms_of_use/index.html">Terms of Use</a><a href="software_license/index.html">Software License</a>
-        </div>
-        <div class="footer-column">
-            <h4>Resources</h4>
-            <a href="download.html">Download</a><a href="https://codagewithrahul.github.io/support/index.html" target="_blank" rel="noopener noreferrer">Support LockBytes</a><a href="https://github.com/CodageWithRahul/LockBytes"
-   target="_blank"
-   rel="noopener noreferrer">GitHub</a>
-        </div>
-    </div>
-    <div class="container footer-bottom">
-        <span>© 2026 LockBytes. All rights reserved.</span><span>Independent software project.</span>
-    </div>
-</footer>
-<script src="theme.js"></script>
-</body>
-</html>
+                <span>LockBytes</span>
+            </a>
 
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="/">Home</a>
+
+                <a href="enc_page/security-cryptography.html">Security</a>
+
+                <a class="youtube-nav-link"
+                   href="https://www.youtube.com/watch?v=yhuIspwCHjM&amp;list=PLA3EXU3yKvnE"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="How to set-up LockBytes on YouTube">
+                    <svg aria-hidden="true"
+                         width="18"
+                         height="14"
+                         viewBox="0 0 20 15"
+                         fill="currentColor">
+                        <path d="M19.6 2.35a2.5 2.5 0 0 0-1.76-1.76C16.29.17 10 .17 10 .17s-6.29 0-7.84.42A2.5 2.5 0 0 0 .4 2.35 26 26 0 0 0 0 7.5a26 26 0 0 0 .4 5.15 2.5 2.5 0 0 0 1.76 1.76c1.55.42 7.84.42 7.84.42s6.29 0 7.84-.42a2.5 2.5 0 0 0 1.76-1.76A26 26 0 0 0 20 7.5a26 26 0 0 0-.4-5.15ZM8 10.72V4.28L13.55 7.5 8 10.72Z"/>
+                    </svg>
+                    <span>How to set-up</span>
+                </a>
+
+                <a href="https://codagewithrahul.github.io/support/index.html"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Support LockBytes
+                </a>
+            </nav>
+
+            <button class="theme-toggle"
+                    type="button"
+                    data-theme-toggle
+                    aria-label="Switch to light mode"
+                    aria-pressed="false">
+                <span class="theme-icon" aria-hidden="true">☀</span>
+                <span class="theme-label">Light mode</span>
+            </button>
+
+            <a href="download.html" class="nav-button">Download</a>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-grid container">
+
+                <div class="hero-copy">
+                    <p class="eyebrow">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        Windows security software
+                    </p>
+
+                    <h1 id="hero-title">
+                        Your files.
+                        <br>
+                        <em>Encrypted.</em>
+                        <br>
+                        Physically protected.
+                    </h1>
+
+                    <p class="hero-lede">
+                        LockBytes combines AES-256-GCM file encryption with a registered USB security layer, keeping normal vault operations on your own Windows device.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="download.html" class="button button-primary">
+                            Download for Windows
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                        <a href="#architecture" class="button button-secondary">
+                            See the protection model
+                        </a>
+                    </div>
+
+                    <p class="hero-footnote">
+                        <span aria-hidden="true">●</span>
+                        Windows 10 / 11
+                        <span aria-hidden="true">·</span>
+                        Local-first by design
+                    </p>
+                </div>
+
+                <div class="hero-visual"
+                     aria-label="LockBytes protection model: file, encryption, USB vault, and recovery"
+                     role="img">
+
+                    <div class="visual-grid"></div>
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+
+                    <div class="core-lock">
+                        <span class="lock-shackle"></span>
+                        <span class="lock-body"></span>
+                    </div>
+
+                    <div class="visual-node node-file">
+                        <span class="node-glyph">▤</span>
+                        <strong>YOUR FILES</strong>
+                        <small>documents · photos · videos</small>
+                    </div>
+
+                    <div class="visual-node node-usb">
+                        <span class="node-glyph">▣</span>
+                        <strong>USB VAULT</strong>
+                        <small>registered device</small>
+                    </div>
+
+                    <div class="visual-node node-recovery">
+                        <span class="node-glyph">↗</span>
+                        <strong>RECOVERY</strong>
+                        <small>your Google Drive</small>
+                    </div>
+
+                    <span class="visual-caption">
+                        LOCKBYTES VAULT
+                        <br>
+                        <b>AES-256-GCM</b>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="signal-strip" aria-label="LockBytes at a glance">
+            <div class="container signal-grid">
+
+                <div>
+                    <strong>AES-256-GCM</strong>
+                    <span>Authenticated encryption</span>
+                </div>
+
+                <div>
+                    <strong>USB-BOUND</strong>
+                    <span>Physical access layer</span>
+                </div>
+
+                <div>
+                    <strong>LOCAL-FIRST</strong>
+                    <span>No LockBytes file server</span>
+                </div>
+
+                <div>
+                    <strong>RECOVERY READY</strong>
+                    <span>Optional Google Drive layer</span>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section problem-section">
+            <div class="container split-intro">
+
+                <div>
+                    <p class="section-label">THE SECURITY PROBLEM</p>
+
+                    <h2>
+                        A password is a gate.
+                        <br>
+                        <em>LockBytes adds a key.</em>
+                    </h2>
+                </div>
+
+                <div>
+                    <p class="lead">
+                        A protected file should not become readable simply because someone reaches your computer. LockBytes separates the protection model into layers: encrypted data, vault credentials, and the presence of a registered USB device.
+                    </p>
+
+                    <p class="muted">
+                        It is a Windows desktop vault, not cloud storage. Your files stay local during normal encryption and decryption.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="architecture" class="section architecture-section">
+            <div class="container">
+
+                <div class="section-heading centered">
+                    <p class="section-label">HOW LOCKBYTES WORKS</p>
+
+                    <h2>From an ordinary file to a layered vault.</h2>
+
+                    <p>
+                        Each step has a job. Encryption protects the data; the physical layer helps control when the vault can be opened.
+                    </p>
+                </div>
+
+                <div class="flow-diagram"
+                     aria-label="File to encrypted vault to USB security layer flow">
+
+                    <div class="flow-step">
+                        <span class="flow-index">01</span>
+                        <span class="flow-icon">▤</span>
+                        <strong>Your file</strong>
+                        <small>Selected locally</small>
+                    </div>
+
+                    <span class="flow-arrow" aria-hidden="true">→</span>
+
+                    <div class="flow-step active">
+                        <span class="flow-index">02</span>
+                        <span class="flow-icon">✦</span>
+                        <strong>Encryption</strong>
+                        <small>AES-256-GCM</small>
+                    </div>
+
+                    <span class="flow-arrow" aria-hidden="true">→</span>
+
+                    <div class="flow-step">
+                        <span class="flow-index">03</span>
+                        <span class="flow-icon">▰</span>
+                        <strong>Encrypted vault</strong>
+                        <small>Authenticated data</small>
+                    </div>
+
+                    <span class="flow-arrow" aria-hidden="true">→</span>
+
+                    <div class="flow-step accent">
+                        <span class="flow-index">04</span>
+                        <span class="flow-icon">▣</span>
+                        <strong>USB security layer</strong>
+                        <small>Registered presence</small>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="usb-layer" class="section usb-section">
+            <div class="container usb-grid">
+
+                <div class="usb-visual"
+                     aria-label="Illustration of a physical USB vault security layer"
+                     role="img">
+
+                    <div class="usb-port"></div>
+
+                    <div class="usb-stick">
+                        <span class="usb-led"></span>
+                        <span class="usb-mark">LB</span>
+                    </div>
+
+                    <div class="usb-ring"></div>
+
+                    <span class="usb-label">
+                        PHYSICAL
+                        <br>
+                        SECURITY LAYER
+                    </span>
+                </div>
+
+                <div class="usb-copy">
+                    <p class="section-label">THE DIFFERENCE</p>
+
+                    <h2>Your encryption key is not only an idea.</h2>
+
+                    <p class="lead">
+                        LockBytes uses a registered USB device as part of the vault protection process. The USB is a security layer with an identity and vault metadata, not just a place to put files.
+                    </p>
+
+                    <div class="detail-list">
+
+                        <div>
+                            <span>01</span>
+                            <p>
+                                <strong>Register</strong>
+                                Pair a USB device with your LockBytes vault.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>02</span>
+                            <p>
+                                <strong>Detect</strong>
+                                The application checks for the registered device when access is needed.
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>03</span>
+                            <p>
+                                <strong>Unlock</strong>
+                                Physical possession works alongside the required credentials.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section encryption-section">
+            <div class="container encryption-grid">
+
+                <div>
+                    <p class="section-label">THE ENCRYPTION ENGINE</p>
+
+                    <h2>Strong encryption, explained plainly.</h2>
+
+                    <p class="lead">
+                        LockBytes uses AES-256-GCM authenticated encryption to protect encrypted file data and help detect unauthorized modification.
+                    </p>
+
+                    <p class="muted">
+                        Large files are processed in chunks, so the application does not need to load an entire file into memory at once. Passwords, keys, and vault metadata remain part of the local protection model.
+                    </p>
+                </div>
+
+                <div class="algorithm-panel">
+
+                    <div class="algorithm-header">
+                        <span>LOCKBYTES / ENCRYPTION</span>
+                        <b>PROTECTED</b>
+                    </div>
+
+                    <div class="algorithm-row">
+                        <span>INPUT</span>
+                        <strong>YOUR FILE</strong>
+                    </div>
+
+                    <div class="algorithm-line"></div>
+
+                    <div class="algorithm-row">
+                        <span>CIPHER</span>
+                        <strong>AES-256-GCM</strong>
+                    </div>
+
+                    <div class="algorithm-row">
+                        <span>OUTPUT</span>
+                        <strong>ENCRYPTED VAULT DATA</strong>
+                    </div>
+
+                    <div class="algorithm-badge">
+                        AUTHENTICATED DATA <span>✓</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="recovery" class="section recovery-section">
+            <div class="container recovery-layout">
+
+                <div class="recovery-copy">
+                    <p class="section-label">RECOVERY PROTECTION</p>
+
+                    <h2>
+                        Physical protection guards access.
+                        <br>
+                        <em>Recovery protection guards against loss.</em>
+                    </h2>
+
+                    <p class="lead">
+                        If your registered USB is lost, damaged, or unavailable, LockBytes can use your own Google Drive account as a recovery mechanism.
+                    </p>
+
+                    <p class="muted">
+                        Google Drive is not needed for normal encryption or decryption. It is a separate, user-controlled recovery layer.
+                    </p>
+
+                    <a href="privacy_policy/index.html" class="text-link">
+                        Read how Google data is handled
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+
+                <div class="recovery-visual">
+
+                    <div class="recovery-endpoint usb-endpoint">
+                        <span>▣</span>
+                        <strong>USB VAULT</strong>
+                        <small>Physical layer</small>
+                    </div>
+
+                    <div class="recovery-connector">
+                        <span class="connector-line" aria-hidden="true"></span>
+                        <span aria-hidden="true">+</span>
+                        <span class="connector-line" aria-hidden="true"></span>
+                    </div>
+
+                    <div class="recovery-endpoint drive-endpoint">
+                        <span>G</span>
+                        <strong>GOOGLE DRIVE</strong>
+                        <small>LOCKBYTES_RECOVERY</small>
+                    </div>
+
+                    <div class="recovery-result">
+                        <span>◆</span>
+                        <strong>MULTI-LAYER PROTECTION</strong>
+                        <small>Encrypted recovery data</small>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section architecture-dark">
+            <div class="container">
+
+                <div class="section-heading centered">
+                    <p class="section-label">SECURITY ARCHITECTURE</p>
+
+                    <h2>A vault built from distinct layers.</h2>
+
+                    <p>
+                        The complete model, from credentials to protected files.
+                    </p>
+                </div>
+
+                <div class="architecture-stack"
+                     role="list"
+                     aria-label="LockBytes security architecture">
+
+                    <div role="listitem">
+                        <span>01</span>
+                        <strong>Vault password</strong>
+                        <small>Your secret input</small>
+                    </div>
+
+                    <b aria-hidden="true">↓</b>
+
+                    <div role="listitem">
+                        <span>02</span>
+                        <strong>Protected key material</strong>
+                        <small>Stored with vault metadata</small>
+                    </div>
+
+                    <b aria-hidden="true">↓</b>
+
+                    <div role="listitem" class="stack-highlight">
+                        <span>03</span>
+                        <strong>Registered USB layer</strong>
+                        <small>Physical presence and identity</small>
+                    </div>
+
+                    <b aria-hidden="true">↓</b>
+
+                    <div role="listitem">
+                        <span>04</span>
+                        <strong>AES-256-GCM vault</strong>
+                        <small>Encrypted, authenticated files</small>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="section features-section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="section-label">CAPABILITIES</p>
+
+                    <h2>Everything has a place in the model.</h2>
+
+                    <p>
+                        Practical controls for protecting files on a Windows computer.
+                    </p>
+                </div>
+
+                <div class="feature-grid">
+
+                    <article class="feature-card featured">
+                        <span class="card-index">01 / CORE</span>
+                        <h3>AES-256-GCM encryption</h3>
+                        <p>
+                            Authenticated encryption for protected file data, with modification detection.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <span class="card-index">02 / ACCESS</span>
+                        <h3>Registered USB vault</h3>
+                        <p>
+                            USB registration, identity, metadata, presence detection, and physical access control.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <span class="card-index">03 / PRIVACY</span>
+                        <h3>Local-first operation</h3>
+                        <p>
+                            Normal encryption and decryption happen on your device without a LockBytes file server.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <span class="card-index">04 / SCALE</span>
+                        <h3>Chunk-based processing</h3>
+                        <p>
+                            Large files can be handled without loading the entire file into memory at once.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <span class="card-index">05 / RECOVERY</span>
+                        <h3>Google Drive recovery</h3>
+                        <p>
+                            Your own account, the Drive API, and a dedicated LOCKBYTES_RECOVERY location for encrypted recovery data.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <span class="card-index">06 / CONTROL</span>
+                        <h3>Application and vault credentials</h3>
+                        <p>
+                            Separate credentials and local security material keep access under the user's control.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section trust-section">
+            <div class="container trust-layout">
+
+                <div>
+                    <p class="section-label">CLEAR BOUNDARIES</p>
+
+                    <h2>Security that tells you what it does.</h2>
+
+                    <p class="lead">
+                        LockBytes does not promise impossible things. It provides a local encryption and access model, while you remain responsible for credentials, USB devices, recovery data, and backups.
+                    </p>
+                </div>
+
+                <div class="trust-table">
+
+                    <div>
+                        <span>Core file operations</span>
+                        <strong>Local</strong>
+                    </div>
+
+                    <div>
+                        <span>Internet for normal encryption</span>
+                        <strong>Not required</strong>
+                    </div>
+
+                    <div>
+                        <span>Google Drive</span>
+                        <strong>Optional recovery</strong>
+                    </div>
+
+                    <div>
+                        <span>LockBytes central file server</span>
+                        <strong>None</strong>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section audience-section">
+            <div class="container audience-grid">
+
+                <div>
+                    <p class="section-label">MADE FOR</p>
+
+                    <h2>
+                        People who want their sensitive files close, controlled, and harder to casually access.
+                    </h2>
+                </div>
+
+                <div class="audience-list">
+
+                    <p>
+                        <span>01</span>
+                        Personal documents, financial records, and identity files
+                    </p>
+
+                    <p>
+                        <span>02</span>
+                        Photos, videos, and creative work that should stay private
+                    </p>
+
+                    <p>
+                        <span>03</span>
+                        Anyone who wants a physical security layer beyond a password
+                    </p>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="section support-section">
+            <div class="container support-layout">
+
+                <div>
+                    <p class="section-label">SUPPORT THE PROJECT</p>
+
+                    <h2>
+                        Privacy tools matter more when they keep getting better.
+                    </h2>
+
+                    <p class="lead">
+                        Sensitive files, account takeovers, and data leaks are part of everyday life now. LockBytes gives Windows users a practical local-first way to add encryption and a physical security layer to the files they care about.
+                    </p>
+
+                    <p class="muted">
+                        Your support helps keep development, documentation, recovery work, and future security improvements moving forward.
+                    </p>
+                </div>
+
+                <div class="support-panel">
+
+                    <div class="support-choice">
+                        <span class="support-number">01</span>
+                        <div>
+                            <strong>Use LockBytes</strong>
+                            <small>
+                                Protect your important files with the current release.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="support-choice">
+                        <span class="support-number">02</span>
+                        <div>
+                            <strong>Support development</strong>
+                            <small>
+                                Help make independent privacy software more capable and accessible.
+                            </small>
+                        </div>
+                    </div>
+
+                    <a href="https://codagewithrahul.github.io/support/index.html"
+                       class="button button-primary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Support LockBytes
+                        <span aria-hidden="true">↗</span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="download-section">
+            <div class="container download-box">
+
+                <div>
+                    <p class="section-label">GET STARTED</p>
+
+                    <h2>
+                        Put a physical layer between your files and access.
+                    </h2>
+
+                    <p>
+                        Download LockBytes for Windows and build your vault around the protection model.
+                    </p>
+                </div>
+
+                <a href="download.html" class="button button-primary large-button">
+                    Download LockBytes
+                    <span aria-hidden="true">→</span>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="/" class="brand">
+                    <img src="img/lockbytes_logo_transparent_kb.png"
+                         alt=""
+                         width="32"
+                         height="32"
+                         class="brand-logo">
+                    <span>LockBytes</span>
+                </a>
+
+                <p>
+                    Windows file encryption with a physical USB security layer and optional recovery protection.
+                </p>
+
+                <p class="developer">
+                    Developed by Rahul Gupta.
+                </p>
+
+            </div>
+
+            <div class="footer-column">
+                <h4>Product</h4>
+                <a href="#architecture">Architecture</a>
+                <a href="#usb-layer">USB layer</a>
+                <a href="#recovery">Recovery</a>
+                <a href="#features">Features</a>
+                <a href="#support">Support</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <a href="privacy_policy/index.html">Privacy Policy</a>
+                <a href="terms_of_use/index.html">Terms of Use</a>
+                <a href="software_license/index.html">Software License</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <a href="download.html">Download</a>
+
+                <a href="https://codagewithrahul.github.io/support/index.html"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Support LockBytes
+                </a>
+
+                <a href="https://github.com/CodageWithRahul/LockBytes"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    GitHub
+                </a>
+            </div>
+
+        </div>
+
+        <div class="container footer-bottom">
+            <span>© 2026 LockBytes. All rights reserved.</span>
+            <span>Independent software project.</span>
+        </div>
+    </footer>
+
+    <script src="theme.js"></script>
+</body>
+
+</html>
